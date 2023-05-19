@@ -1,4 +1,4 @@
-# TRABALHO DE PI:  Título do Trabalho
+# TRABALHO DE PI:  Domos 
 Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 # Sumário
@@ -25,20 +25,24 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 
 
 #### 3.1. EAP - Estrutura Analítica do Projeto
-a) Incluír imagem da EAP 
-b) Dicinário da EAP 
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3f0fd1a9-ab14-4c01-8952-6360808067ee)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/2ee1a25d-8e9e-4df3-8acb-d137197c6165)  
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/d4905657-4df4-4760-8c28-855ef66b6305)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/b6b416b2-e06e-404d-902f-398715228a17)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/98dfccd2-90c6-475f-b54b-79037fa0bebd)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/cbe79752-fc08-4875-a49b-ab96e3964465)
 
 
 #### 3.2. Requisitos funcionais e não funcionais
-Incluir informações de: Identificador , Descrição e Prioridade
-Exemplos:<br>
-a) <img src="https://raw.githubusercontent.com/discproint/template_projeto_integrador/main/arquivos/requisitos_funcionais.png" width="350" height="100" /> <br>
-b) <img src="https://raw.githubusercontent.com/discproint/template_projeto_integrador/main/arquivos/requisitos_nao_funcionais.png" width="350" height="190" /> <br>
+**Requisitos funcionais**
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/ae985059-0a2e-4226-bcae-24d67c937f9e)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/24ed9047-1aee-4fdc-b8ad-fbe7a1773f15)
+**Requisitos não funcionais**
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/44700410-2a40-4e5d-bf85-772a2bf2ea06)
+
 
 #### 3.3 Validação da Ideia.
-a) Link do formulário desenvolvido
-b) Link para Relatório/Apresentação de resultados obtidos
+**Formulário:** https://docs.google.com/forms/d/1UVo8cfiToc55kceu3vzgRaVAiUsT3d8eUm1UVY6vaIY/edit <br>
+**Relatório:** https://www.canva.com/design/DAFjLUgTWOE/O7eW_Np8ccUgRKZSzz4PeQ/edit?analyticsCorrelationId=5fb6e34d-741c-49a8-8a73-0285c9f5ed47
 
 ### 4.Personas e Histórias de usuário<br>
 <img src="https://neilpatel.com/wp-content/uploads/2019/07/exemplo-carlos.png" Personas src="https://neilpatel.com/wp-content/uploads/2019/07/exemplo-carlos.png" width="500" height="500" /> <br>
@@ -50,16 +54,12 @@ b) inclusão das Histórias de usuário desenvolvidas pelo grupo
 
 
 ### 5. PROTÓTIPOS DO SISTEMA<br>
-Neste ponto a codificação não e necessária, somente as ideias de telas devem ser desenvolvidas. O princípio aqui é pensar na criação da interface para identificar possíveis informações a serem armazenadas e/ou descartadas <br>
-
-Sugestão: https://balsamiq.com/products/mockups/<br>
-
-![Alt text](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/balsamiq.png?raw=true "Title")
-![Arquivo PDF do Protótipo Balsamiq feito para Empresa Devcom](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
 
 #### 5.1 PROTÓTIPO DO SISTEMA MOBILE
+https://quant-ux.com/#/apps/644920c703e7a20038a8b23b/design/s10484_99706.html
 
 #### 5.2 PROTÓTIPO DO SISTEMA WEB
+https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 
 #### 5.3 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM OS SISTEMA WEB/MOBILE PROPOSTOS?
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
@@ -73,17 +73,7 @@ Sugestão: https://balsamiq.com/products/mockups/<br>
 * Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
  
  ### 6.MODELO CONCEITUAL<br>
-    A) Utilizar a Notação adequada (Preferencialmente utilizar o BR Modelo 3)
-    B) O mínimo de entidades do modelo conceitual pare este trabalho será igual a 4.
-        * informe quais são as 3 principais entidades do sistema em densenvolvimento
-      (se houverem mais de 3 entidades, pense na importância da entidade para o sistema)       
-    C) Principais fluxos de informação/entidades do sistema (mínimo 2). <br>Dica: normalmente estes fluxos estão associados as tabelas que conterão maior quantidade de dados 
-    D) Qualidade e Clareza
-        Garantir que a semântica dos atributos seja clara no esquema (nomes coerentes com os dados).
-        Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null, 
-        e tuplas falsas (Aplicar os conceitos de normalização abordados).   
-        
-![Alt text](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/concept_sample.png?raw=true "Modelo Conceitual")
+    ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/9c339e28-292d-44ef-8b9f-69ea959dc224)
       
     
 #### 7 Descrição dos dados 
