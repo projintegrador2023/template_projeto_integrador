@@ -21,7 +21,7 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
  
 ### 3.PMC<br>
-<img src="https://raw.githubusercontent.com/discproint/template_projeto_integrador/main/arquivos/pmc.png" width="350" height="100" />
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/a2f1e82f-aa81-480b-83f9-1cd19aad4e0e)
 
 
 #### 3.1. EAP - Estrutura Analítica do Projeto
