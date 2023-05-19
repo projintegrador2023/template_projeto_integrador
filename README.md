@@ -27,6 +27,8 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 #### 3.1. EAP - Estrutura Analítica do Projeto
 a) Incluír imagem da EAP 
 b) Dicinário da EAP 
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3f0fd1a9-ab14-4c01-8952-6360808067ee)
+
 
 #### 3.2. Requisitos funcionais e não funcionais
 Incluir informações de: Identificador , Descrição e Prioridade
