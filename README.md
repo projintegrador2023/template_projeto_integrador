@@ -7,7 +7,7 @@ Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 Integrantes do grupo<br>
 Camila Fraga Egydio: camilafragaegydio@gail.com <br>
 Davi Nunes Ribeiro: davinunesribeiro@gmail.com<br>
-Isabelly Balestrassi Nune de Andrades: isabellyandrades.ifes@gmail.com <br>
+Isabelly Balestrassi Nunes de Andrades: isabellyandrades.ifes@gmail.com <br>
 Yasmin Santana Rodrigues: mamin8172@gmail.com <br>
 ...
 
@@ -21,11 +21,8 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
  
 ### 3.PMC<br>
-![Exemplo de PMC](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/pmc.png)
+<img src="https://raw.githubusercontent.com/discproint/template_projeto_integrador/main/arquivos/pmc.png" width="350" height="100" />
 
-
-
-a) inclusão do PMC desenvolvido pelo grupo <br>
 
 #### 3.1. EAP - Estrutura Analítica do Projeto
 a) Incluír imagem da EAP 
