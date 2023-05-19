@@ -72,7 +72,7 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 * Relatório com a quantidade de empregados por cada departamento incluindo as seguintes informações: nome do departamento, supervisor e quantidade de empregados alocados no departamento.
 * Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
  
- ### 6.MODELO CONCEITUAL<br>
+ #### 6.MODELO CONCEITUAL<br>
     ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/9c339e28-292d-44ef-8b9f-69ea959dc224)
       
     
