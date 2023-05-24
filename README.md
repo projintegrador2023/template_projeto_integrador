@@ -743,6 +743,53 @@ b) Todos estão usando da mesma tabela.
         
 #### 12 PRINCIPAIS CONSULTAS DO SISTEMA 
  Inserir as principais consultas (relativas aos 5 principais relatórios) definidas previamente no iten 3.1 deste template.
+ 1) Objetivo: Saber quantas postagens cada morador realizou no aplicativo.
+      select USUARIO.nome, 
+      count(POSTAGEM.codigo_postagem) as qtd_postagens
+      from USUARIO INNER JOIN POSTAGEM ON USUARIO.cpf = POSTAGEM.fk_usuario_cpf
+      group by nome 
+      ORDER BY qtd_postagens DESC
+      ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/2287ff78-7297-4fb2-b57b-0234c2e67128)
+2) Objetivo: Mostrar quantas vezes cada postagem foi favoritada
+      SELECT POSTAGEM.titulo, count(FAVORITA.fk_postagem_codigo_postagem) as qtd_favoritado
+      FROM POSTAGEM
+      INNER JOIN FAVORITA ON POSTAGEM.codigo_postagem = FAVORITA.fk_postagem_codigo_postagem
+      GROUP BY titulo
+      ORDER BY qtd_favoritado DESC
+      ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/18613158-a45c-4530-b74c-79744ad30988)
+
+3) Objetivo: Mostrar quantas vezes cada tipo de importância foi utilizado.
+      SELECT IMPORTANCIA.importancia, COUNT(POSTAGEM.codigo_postagem) as qtd_avisos
+      FROM IMPORTANCIA
+      INNER JOIN AVISO ON IMPORTANCIA.codigo = AVISO.fk_importancia_codigo
+      INNER JOIN POSTAGEM ON AVISO.fk_postagem_codigo_postagem = POSTAGEM.codigo_postagem
+      GROUP BY importancia
+      ORDER BY qtd_avisos DESC
+      ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/7a87245e-80fe-4df3-adaf-06e3b392e3a4)
+4) Objetivo: Mostrar quantas vezes cada tag foi utilizada nos anúncios.
+     SELECT TAG.tag, COUNT(POSTAGEM.codigo_postagem) as qtd_anuncios
+     FROM TAG
+     INNER JOIN ANUNCIO ON TAG.codigo = ANUNCIO.fk_tag_codigo
+     INNER JOIN POSTAGEM ON ANUNCIO.fk_postagem_codigo_postagem = POSTAGEM.codigo_postagem
+     GROUP BY tag
+     ORDER BY qtd_anuncios DESC
+     ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/050c35cb-a592-42ea-9c7b-d8193e1382ea)
+
+5) Objetivo: Mostrar a quantidade de espaços públicos em cada condomínio.
+     SELECT CONDOMINIO.nome, COUNT(CONDOMINIO_ESPACOS_PUBLICOS.fk_condominio_codigo_condominio) as qtd_espacos_publicos
+     FROM CONDOMINIO
+     INNER JOIN CONDOMINIO_ESPACOS_PUBLICOS ON CONDOMINIO.codigo_condominio = CONDOMINIO_ESPACOS_PUBLICOS.fk_condominio_codigo_condominio
+     GROUP BY nome
+     ORDER BY qtd_espacos_publicos DESC
+     ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/ef7d6068-c4c3-440a-9e88-3894a2f6e843)
+
+6) Objetivo: Mostra o percentual de quantos condominios possuem certo tipo de moradia
+     SELECT TIPO_MORADIA.nome as nome_tipo_moradia, COUNT(CONDOMINIO.fk_tipo_moradia_codigo_tipo_moradia) as qtd_condominios
+     FROM TIPO_MORADIA
+     INNER JOIN CONDOMINIO ON TIPO_MORADIA.codigo_tipo_moradia	= CONDOMINIO.fk_tipo_moradia_codigo_tipo_moradia
+     GROUP BY nome_tipo_moradia
+     ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/6f703a8d-c1a2-46cf-83d2-588c584c7746)
+
  <br>
   a) Você deve apresentar as consultas em formato SQL para cad um dos relatórios.
  <br>
