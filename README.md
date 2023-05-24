@@ -44,14 +44,14 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 **Relatório:** https://www.canva.com/design/DAFjLUgTWOE/O7eW_Np8ccUgRKZSzz4PeQ/edit?analyticsCorrelationId=5fb6e34d-741c-49a8-8a73-0285c9f5ed47
 
 ### 4.Personas e Histórias de usuário<br>
-a) <img src="arquivos/persona.png" width="1920" height="1080" /> <br>
-<img src="arquivos/persona (1).png" width="1920" height="1080" /> <br>
-<img src="arquivos/persona (2).png" width="1920" height="1080" /> <br>
-<img src="arquivos/persona (3).png" width="1920" height="1080" /> <br>
-<img src="arquivos/persona (4).png" width="1920" height="1080" /> <br>
+a) <img src="arquivos/persona.png"/> <br>
+<img src="arquivos/persona (1).png"/> <br>
+<img src="arquivos/persona (2).png"/> <br>
+<img src="arquivos/persona (3).png"/> <br>
+<img src="arquivos/persona (4).png"/> <br>
 <br>
-<img src="arquivos/postit_git.png" width="1920" height="1080" /> <br>
-<img src="arquivos/postit_git (1).png" width="1920" height="1080" /> <br>
+<img src="arquivos/postit_git.png"/> <br>
+<img src="arquivos/postit_git (1).png"/> <br>
 
 ### 5. PROTÓTIPOS DO SISTEMA<br>
 
