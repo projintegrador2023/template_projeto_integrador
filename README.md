@@ -44,14 +44,14 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 **Relatório:** https://www.canva.com/design/DAFjLUgTWOE/O7eW_Np8ccUgRKZSzz4PeQ/edit?analyticsCorrelationId=5fb6e34d-741c-49a8-8a73-0285c9f5ed47
 
 ### 4.Personas e Histórias de usuário<br>
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/737d11de-5d19-40c4-aa08-d2adae77fd93)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/d5a92f93-a5f4-4ce6-b612-12b5e0890a52)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/391b6894-2bd1-43ea-997d-1b03e8299667)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/1478a877-7c05-4c70-91c3-8c04105ca16b)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/c6e225d6-7536-44e5-b81a-624869c3f5a5)
+a) <img src="arquivos/persona.png" width="1920" height="1080" /> <br>
+<img src="arquivos/persona (1).png" width="1920" height="1080" /> <br>
+<img src="arquivos/persona (2).png" width="1920" height="1080" /> <br>
+<img src="arquivos/persona (3).png" width="1920" height="1080" /> <br>
+<img src="arquivos/persona (4).png" width="1920" height="1080" /> <br>
 <br>
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3f2780df-f5a3-4a83-a033-d2f1646c70ef)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/59a81090-775c-4a85-8356-cff40b6ab2b7)
+<img src="arquivos/postit_git.png" width="1920" height="1080" /> <br>
+<img src="arquivos/postit_git (1).png" width="1920" height="1080" /> <br>
 
 ### 5. PROTÓTIPOS DO SISTEMA<br>
 
