@@ -70,7 +70,7 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 * Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
  
  #### 6.MODELO CONCEITUAL<br>
-    A) <img src="arquivos/conceitualCompleto.jpeg"/>
+ A) <img src="arquivos/conceitualCompleto.jpeg"/>
     B) As principais entidades desse sistema em desenvolvimento são USUÁRIO, CONDOMÍNIO e POSTAGEM
     C) Os principais fluxos de informação desse sistema são USUÁRIO, POSTAGEM e CONDOMÍNIO
 
@@ -216,16 +216,17 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 
 
 ### 8	RASTREABILIDADE DOS ARTEFATOS<br>
-        a) Enquanto síndico, gostaria de publicar avisos importantes para mostrar aos moradores: <img src="arquivos/avisosSindico.jpeg"/> <br>
-        
-        Enquanto administrador, gostaria de criar avisos para publicar na aplicação: <img src="arquivos/criarAviso.jpeg"/> <br>
-        
-        Enquanto morador, gostaria de visualizar os avisos do síndico para  não perder informações: <img src="arquivos/avisosMorador.jpeg"/> <br>
-        
-        b) Todos estão usando da mesma tabela. <img src="arquivos/tabelaConceitual.jpeg"/> <br>
+a) Enquanto síndico, gostaria de publicar avisos importantes para mostrar aos moradores: <img src="arquivos/avisosSindico.jpeg"/> <br>
+
+Enquanto administrador, gostaria de criar avisos para publicar na aplicação: <img src="arquivos/criarAviso.jpeg"/> <br>
+
+Enquanto morador, gostaria de visualizar os avisos do síndico para  não perder informações: <img src="arquivos/avisosMorador.jpeg"/> <br>
+
+b) Todos estão usando da mesma tabela. 
+<img src="arquivos/tabelaConceitual.jpeg"/> <br>
         
 ### 9	MODELO LÓGICO<br>
-        <img src="arquivos/logicoCompleto.jpeg"/>
+<img src="arquivos/logicoCompleto.jpeg"/>
 
 ### 10	MODELO FÍSICO<br>
         CREATE TABLE NIVEL_PERMISSAO (
