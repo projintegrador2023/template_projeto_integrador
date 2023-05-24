@@ -2,7 +2,6 @@
 Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 # Sumário
-
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
 Camila Fraga Egydio: camilafragaegydio@gail.com <br>
@@ -53,8 +52,6 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 <br>
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3f2780df-f5a3-4a83-a033-d2f1646c70ef)
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/59a81090-775c-4a85-8356-cff40b6ab2b7)
-
-
 
 ### 5. PROTÓTIPOS DO SISTEMA<br>
 
