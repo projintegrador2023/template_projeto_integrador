@@ -70,7 +70,7 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 * Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
  
  #### 6.MODELO CONCEITUAL<br>
- A) <img src="arquivos/conceitualCompleto.jpeg"/>
+ A) ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/10f38392-532f-476f-bdda-71d1056c5e8a)
     B) As principais entidades desse sistema em desenvolvimento são USUÁRIO, CONDOMÍNIO e POSTAGEM
     C) Os principais fluxos de informação desse sistema são USUÁRIO, POSTAGEM e CONDOMÍNIO
 
@@ -142,6 +142,8 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
     - qtd_divisoes: Um número inteiro que representa a quantidade de divisões no condomínio.
     - codigo_condominio: Chave primária que identifica o condomínio.
     - regimento: Uma string de até 4000 caracteres que representa o regimento do condomínio.
+    - senha: Uma string de até 80 caracteres que representa a senha da conta do condomínio.
+    - email: Uma string de até 100 caracteres que representa o email do condomínio.
     - FK_TIPO_MORADIA_codigo_tipo_moradia: Chave estrangeira que faz referência ao código do tipo de moradia do condomínio.
     - FK_ENDERECO_codigo_endereco: Chave estrangeira que faz referência ao código do endereço do condomínio.
     - FK_FAIXA_QTD_MORADORES_codigo_faixa: Chave estrangeira que faz referência ao código da faixa de quantidade de moradores do condomínio.
