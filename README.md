@@ -57,12 +57,11 @@ https://quant-ux.com/#/apps/644920c703e7a20038a8b23b/design/s10484_99706.html
 https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 
 #### 5.3 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM OS SISTEMA WEB/MOBILE PROPOSTOS? 
-> A Empresa DevCom precisa inicialmente dos seguintes relatórios:
-* Relatório que informe quais são os gerentes de cada departamento incluindo as seguintes informações: número do departamento,  nome do departamento, e nome do gerente.
-* Relatório de empregados por projeto incluindo as seguintes informações: número do projeto, nome do projeto, rg do empregado, nome do empregado e quantidade de horas de trabalho do empregado alocadas ao projeto.
-* Relatório de empregados com dependentes incluindo as seguintes informações: rg do empregado, nome do empregado, nome do dependente, tipo de relação, data de nascimento do dependente e sexo do dependente.
-* Relatório com a quantidade de empregados por cada departamento incluindo as seguintes informações: nome do departamento, supervisor e quantidade de empregados alocados no departamento.
-* Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
+* Saber quantas postagens cada morador realizou no aplicativo.
+* Mostrar quantas vezes cada postagem foi favoritada
+* Mostrar quantas vezes cada tipo de importância foi utilizado.
+* Mostrar quantas vezes cada tag foi utilizada nos anúncios.
+* Mostrar a quantidade de espaços públicos em cada condomínio.
  
  #### 6.MODELO CONCEITUAL<br>
  A) ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/f28e5a02-0124-4d98-bb7e-bf8dcf9fbba4)
