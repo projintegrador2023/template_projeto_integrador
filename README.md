@@ -201,7 +201,7 @@ b) Todos estão usando da mesma tabela. <br>
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/cfd312c3-c7d6-4ce2-9335-4fcd3f90af7e)
 
 ### 10	MODELO FÍSICO<br>
-       CREATE TABLE IMAGEM (
+CREATE TABLE IMAGEM (
     codigo_imagem SERIAL NOT NULL PRIMARY KEY,
     imagem VARCHAR(500)
 );
@@ -269,12 +269,12 @@ CREATE TABLE ESPACOS_PUBLICOS (
 
 CREATE TABLE TIPO_MORADIA (
     codigo_tipo_moradia SERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(12)
+    nome VARCHAR(30)
 );
 
 CREATE TABLE FAIXA_QTD_MORADORES (
     codigo_faixa SERIAL NOT NULL PRIMARY KEY,
-    faixa_qtd VARCHAR(7)
+    faixa_qtd VARCHAR(10)
 );
 
 CREATE TABLE TIPO_DIVISAO (
@@ -305,7 +305,7 @@ CREATE TABLE CONDOMINIO (
     FK_REGIMENTO_codigo_regimento INTEGER,
     FK_TIPO_MORADIA_codigo_tipo_moradia INTEGER,
     FK_ENDERECO_codigo_endereco INTEGER,
-    FK_FAIXA_QTD_MORADORES_codigo_faixa INTEGER
+    FK_FAIXA_QTD_MORADORES_codigo_faixa INTEGER,
 
     FOREIGN KEY(FK_REGIMENTO_codigo_regimento) REFERENCES REGIMENTO(codigo_regimento),
     FOREIGN KEY(FK_TIPO_MORADIA_codigo_tipo_moradia) REFERENCES TIPO_MORADIA(codigo_tipo_moradia),
@@ -355,12 +355,10 @@ CREATE TABLE USUARIO (
     nome VARCHAR(100),
     email VARCHAR(256),
     senha VARCHAR(80),
-    FK_IMAGEM_codigo_imagem INTEGER,
     FK_CONDOMINIO_codigo_condominio VARCHAR(6),
     FK_NIVEL_PERMISSAO_codigo_nivel_permissao INTEGER,
     FK_MORADIA_codigo_moradia INTEGER,
 
-    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem),
     FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
     FOREIGN KEY(FK_NIVEL_PERMISSAO_codigo_nivel_permissao) REFERENCES NIVEL_PERMISSAO(codigo_nivel_permissao),
     FOREIGN KEY(FK_MORADIA_codigo_moradia) REFERENCES MORADIA(codigo_moradia)
@@ -407,8 +405,8 @@ CREATE TABLE ANUNCIO (
 );
 
 CREATE TABLE IMPORTANCIA (
-    codigo_importancia SERIAL NOT NULL PRIMARY KEY
-    importancia VARCHAR(20) PRIMARY KEY
+    codigo_importancia SERIAL NOT NULL PRIMARY KEY,
+    importancia VARCHAR(20)
 );
 
 CREATE TABLE AVISO (
@@ -441,315 +439,247 @@ CREATE TABLE Reserva (
    FOREIGN KEY(FK_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
 );
 
+
        
 ### 11	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-    -- Insert data into the NIVEL_PERMISSAO table
-    INSERT INTO NIVEL_PERMISSAO (codigo_nivel_permissao, tipo)
-    VALUES (1, 'Síndico'),
-    (2, 'Administrador'),
-    (3, 'Morador');
+CREATE TABLE IMAGEM (
+    codigo_imagem SERIAL NOT NULL PRIMARY KEY,
+    imagem VARCHAR(500)
+);
 
-    -- Insert data into the TIPO_LOGRADOURO table
-    INSERT INTO TIPO_LOGRADOURO (codigo_tipo_logradouro, nome)
-    VALUES (1, 'Rua'),
-    (2, 'Avenida'),
-    (3, 'Travessa'),
-    (4, 'Praça'),
-    (5, 'Alameda');
+-- ENDEREÇO
+CREATE TABLE TIPO_LOGRADOURO (
+    codigo_tipo_logradouro SERIAL PRIMARY KEY,
+    nome VARCHAR(60)
+);
 
-    -- Insert data into the PAIS table
-    INSERT INTO PAIS (codigo_pais, nome)
-    VALUES (1, 'Brasil');
+CREATE TABLE PAIS (
+    codigo_pais SERIAL PRIMARY KEY,
+    nome VARCHAR(41)
+);
 
-    -- Insert data into the ESTADO table
-    INSERT INTO ESTADO (codigo_estado, uf, FK_PAIS_codigo_pais)
-    VALUES (1, 'SP', 1),
-           (2, 'PB', 1),
-           (3, 'RJ', 1);
+CREATE TABLE ESTADO (
+    codigo_estado SERIAL PRIMARY KEY,
+    uf VARCHAR(2),
+    FK_PAIS_codigo_pais INTEGER,
 
-    -- Insert data into the CIDADE table
-    INSERT INTO CIDADE (codigo_cidade, nome, FK_ESTADO_codigo_estado)
-    VALUES (1, 'São Paulo', 1),
-           (2, 'São Bernardo do Campo', 1),
-           (3, 'João Pessoa', 2),
-           (4, 'Rio de Janeiro', 3),
-           (5, 'Campinas', 1);
+    FOREIGN KEY(FK_PAIS_codigo_pais) REFERENCES PAIS(codigo_pais)
+);
 
-    -- Insert data into the BAIRRO table
-    INSERT INTO BAIRRO (codigo_bairro, nome, FK_CIDADE_codigo_cidade)
-    VALUES (1, 'Centro', 1),
-           (2, 'Jardim Vista', 2),
-           (3, 'Manaíra', 3),
-           (4, 'Centro', 4),
-           (5, 'Parque das Flores', 5);
+CREATE TABLE CIDADE (
+    codigo_cidade SERIAL PRIMARY KEY,
+    nome VARCHAR(58),
+    FK_ESTADO_codigo_estado INTEGER,
 
-    -- Insert data into the ENDERECO table
-    INSERT INTO ENDERECO (codigo_endereco, numero, desc_logradouro, cep, FK_TIPO_LOGRADOURO_codigo_tipo_logradouro, FK_BAIRRO_codigo_bairro)
-    VALUES (1, 125, 'Rua das Flores', '12020010', 1, 1),
-    (2, 2034, 'Avenida do Sol', '08090520', 2, 2),
-    (3, 456, 'Travessa das Palmeiras', '58045110', 3, 3),
-    (4, 987, 'Praça do Sol', '01010001', 4, 4),
-    (5, 360, 'Alameda das Margaridas', '13083200', 5, 5);
-    INSERT INTO TIPO_MORADIA (codigo_tipo_moradia, nome) VALUES
-    (1, 'Casa'),
-    (2, 'Apartamento'),
-    (3, 'Casa e Apartamento');
+    FOREIGN KEY(FK_ESTADO_codigo_estado) REFERENCES ESTADO(codigo_estado)
+);
 
-    -- Insert data into the FAIXA_QTD_MORADORES table
-    INSERT INTO FAIXA_QTD_MORADORES (codigo_faixa, faixa_qtd)
-    VALUES
-        (1, '1-100'),
-        (2, '100-500'),
-        (3, '500-1000'),
-        (4, '1000+');
+CREATE TABLE BAIRRO (
+    codigo_bairro SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(60),
+    FK_CIDADE_codigo_cidade INTEGER,
 
-    -- Insert data into the TIPO_DIVISAO table
-    INSERT INTO TIPO_DIVISAO (codigo_tipo_divisao, nome)
-    VALUES
-        (1, 'Letras'),
-        (2, 'Números'),
-        (3, 'Cores');
+    FOREIGN KEY(FK_CIDADE_codigo_cidade) REFERENCES CIDADE(codigo_cidade)
+);
 
-    INSERT INTO DIVISAO (desc_divisao, FK_TIPO_DIVISAO_codigo_tipo_divisao)
-    VALUES
-        ('A', 1),
-        ('B', 1),
-        ('C', 1),
-        ('D', 1),
-        ('E', 1),
-        ('F', 1),
-        ('G', 1),
-        ('H', 1),
-        ('I', 1),
-        ('J', 1),
-        ('1', 2),
-        ('2', 2),
-        ('3', 2),
-        ('4', 2),
-        ('5', 2),
-        ('6', 2),
-        ('7', 2),
-        ('8', 2),
-        ('9', 2),
-        ('10', 2),
-        ('Azul', 3),
-        ('Vermelho', 3),
-        ('Roxo', 3);
+CREATE TABLE ENDERECO (
+    codigo_endereco SERIAL PRIMARY KEY,
+    numero INTEGER,
+    desc_logradouro VARCHAR(200),
+    cep VARCHAR(8),
+    FK_TIPO_LOGRADOURO_codigo_tipo_logradouro INTEGER,
+    FK_BAIRRO_codigo_bairro INTEGER,
 
-    -- Inserting data into NUM_MORADIA table
-    INSERT INTO NUM_MORADIA (numero_moradia)
-    VALUES
-        ('101'),
-        ('202'),
-        ('303'),
-        ('404'),
-        ('505');
+    FOREIGN KEY(FK_TIPO_LOGRADOURO_codigo_tipo_logradouro) REFERENCES TIPO_LOGRADOURO(codigo_tipo_logradouro),
+    FOREIGN KEY(FK_BAIRRO_codigo_bairro) REFERENCES BAIRRO(codigo_bairro)
+);
 
-    -- Inserting data into MORADIA table
-    INSERT INTO MORADIA (fk_DIVISAO_codigo_divisao, fk_NUM_MORADIA_codigo)
-    VALUES
-        (1, 1),
-        (1, 5),
-        (2, 1),
-        (3, 1),
-        (5, 3);
+-- CONDOMINIO
+CREATE TABLE TIPOS_ESPACOS_PUBLICOS (
+    codigo_tipos_espacos_publicos SERIAL PRIMARY KEY,
+    nome VARCHAR(50)
+);
 
-    INSERT INTO CONDOMINIO (cnpj, nome, qtd_divisoes, codigo_condominio, regimento, FK_TIPO_MORADIA_codigo_tipo_moradia, FK_ENDERECO_codigo_endereco, FK_FAIXA_QTD_MORADORES_codigo_faixa) VALUES
-    ('97850315790467', 'Residencial das Flores', 5, '532097', 'https://exemplo.com/regimento_interno_residencial_das_flores.pdf', 1, 1, 2),
-    ('67128439571218', 'Villaggio di Napoli', 10, '892356', 'https://exemplo.com/regimento_interno_villagio_di_napoli.pdf', 3, 2, 4),
-    ('81029468093542', 'Condomínio dos Girassóis', 3, '415869', 'https://exemplo.com/regimento_interno_condominio_dos_girassois.pdf', 2, 3, 2),
-    ('23687451230759', 'Jardim dos Lírios', 6, '724138', 'https://exemplo.com/regimento_interno_jardim_dos_lirios.pdf', 1, 4, 3),
-    ('76412903576492', 'Condomínio das Acácias', 7, '301572', 'https://exemplo.com/regimento_interno_condominio_das_acacias.pdf', 3, 5, 3);
+CREATE TABLE ESPACOS_PUBLICOS (
+    codigo_espacos_publicos SERIAL PRIMARY KEY,
+    nome VARCHAR(200),
+    FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos INTEGER,
 
-    -- Insert data into the USUARIO table
-    INSERT INTO USUARIO (cpf, nome, email, senha, imagem, FK_NIVEL_PERMISSAO_codigo_nivel_permissao, FK_CONDOMINIO_codigo_condominio, FK_MORADIA_codigo)
-    VALUES ('49628092010', 'Pedro Henrique da Silva', 'pedro.silva90@gmail.com', 'J#mD8n@KsT', null, 3, '532097', 1),
-    ('31589904263', 'Ana Carolina Oliveira Santos', 'anacarolsantos_25@hotmail.com', '7cH$zN9mRf', null, 3, '532097', 2),
-     ('72815390627', 'Gustavo Pereira Souza', 'gustavosouza@gmail.com', 'qP5^gB@2hE', null, 3, '532097', 3),
-    ('42155708213', 'Fernanda Almeida Lima', 'fernandaalmeida.lima@yahoo.com', 'fY3!kT#6sL', null, 1, '532097', 4),
-    ('86361974530', 'Guilherme Ferreira Costa', 'guilhermecosta87@outlook.com', '9vM@pG6rXy', null, 2, '532097', 5);
+    FOREIGN KEY(FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos) REFERENCES TIPOS_ESPACOS_PUBLICOS(codigo_tipos_espacos_publicos)
+);
 
-    -- Inserting data into TIPOS_ESPACOS_PUBLICOS table
-    INSERT INTO TIPOS_ESPACOS_PUBLICOS (nome)
-    VALUES
-        ('Salão de Festas'),
-        ('Churrasqueira'),
-        ('Quadra'),
-        ('Sauna'),
-        ('Sala de Jogos'),
-        ('Espaço Gourmet'),
-        ('Espaço Kids');
+CREATE TABLE TIPO_MORADIA (
+    codigo_tipo_moradia SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(30)
+);
 
-    -- Insert data into the ESPACOS_PUBLICOS table
-    INSERT INTO ESPACOS_PUBLICOS (codigo_espacos_publicos, nome, FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos)
-    VALUES (1, 'A', 1),
-    (2, 'B', 1),
-    (3, 'C', 1),
-    (4, 'A', 2),
-    (5, 'B', 2),
-    (6, 'C', 2),
-    (7, 'D', 2),
-    (8, 'E', 2),
-    (9, 'F', 2),
-    (10, 'futebol', 3),
-    (11, 'volei', 3),
-    (12, 'tenis', 3),
-    (13, '1', 4),
-    (14, '1', 5),
-    (15, '2', 5),
-    (16, '1', 6),
-    (17, '1', 7);
+CREATE TABLE FAIXA_QTD_MORADORES (
+    codigo_faixa SERIAL NOT NULL PRIMARY KEY,
+    faixa_qtd VARCHAR(10)
+);
 
-    -- Inserting data into RESERVA table
-    INSERT INTO RESERVA (fk_USUARIO_cpf, fk_ESPACOS_PUBLICOS_codigo_espacos_publicos, data, hora_entrada, hora_saida)
-    VALUES
-        ('72815390627', 4, '2023-07-24', '14:30', '16:00'),
-        ('42155708213', 10, '2023-10-06', '14:00', '20:00'),
-        ('31589904263', 1, '2023-11-14', '12:00', '18:00'),
-        ('49628092010', 2, '2023-12-03', '15:00', '22:00'),
-        ('42155708213', 1, '2024-01-01', '00:00', '02:00'),
-        ('42155708213', 1, '2023-12-31', '22:00', '23:59');
+CREATE TABLE TIPO_DIVISAO (
+    codigo_tipo_divisao SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(80)
+);
 
-    -- Inserting data into DIVISAO_CONDOMINIO table
-    INSERT INTO DIVISAO_CONDOMINIO (fk_DIVISAO_codigo_divisao, fk_CONDOMINIO_codigo_condominio)
-    VALUES
-        (1, '532097'),
-        (2, '532097'),
-        (3, '532097'),
-        (4, '532097'),
-        (5, '532097'),
-        (11, '892356'),
-        (12, '892356'),
-        (13, '892356'),
-        (14, '892356'),
-        (15, '892356'),
-        (16, '892356'),
-        (17, '892356'),
-        (18, '892356'),
-        (19, '892356'),
-        (20, '892356'),
-        (21, '415869'),
-        (22, '415869'),
-        (23, '415869'),
-        (11, '724138'),
-        (12, '724138'),
-        (13, '724138'),
-        (14, '724138'),
-        (15, '724138'),
-        (16, '724138'),
-        (1, '301572'),
-        (2, '301572'),
-        (3, '301572'),
-        (4, '301572'),
-        (5, '301572'),
-        (6, '301572'),
-        (7, '301572');
+CREATE TABLE DIVISAO (
+    codigo_divisao SERIAL NOT NULL PRIMARY KEY,
+    desc_divisao VARCHAR(100),
+    FK_TIPO_DIVISAO_codigo_tipo_divisao INTEGER,
 
-    -- Inserting data into CONDOMINIO_ESPACOS_PUBLICOS table
-    INSERT INTO CONDOMINIO_ESPACOS_PUBLICOS (fk_CONDOMINIO_codigo_condominio, fk_ESPACOS_PUBLICOS_codigo_espacos_publicos)
-    VALUES
-        ('532097', 1),
-        ('532097', 2),
-        ('532097', 10),
-        ('532097', 4),
-        ('532097', 14),
-        ('892356', 1),
-        ('892356', 11),
-        ('892356', 1),
-        ('892356', 4),
-        ('415869', 4),
-        ('415869', 1),
-        ('724138', 1),
-        ('724138', 4),
-        ('724138', 5),
-        ('724138', 10),
-        ('301572', 1),
-        ('301572', 2),
-        ('301572', 4),
-        ('301572', 13),
-        ('301572', 14),
-        ('301572', 17);
+    FOREIGN KEY(FK_TIPO_DIVISAO_codigo_tipo_divisao) REFERENCES TIPO_DIVISAO(codigo_tipo_divisao)
+);
 
-    INSERT INTO TAG (tag) VALUES ('Alimentação'), ('Confecção'), ('Eletrônicos'), ('Cosméticos'), ('Decoração'), ('Petshop'), ('Serviços');
+CREATE TABLE REGIMENTO (
+    codigo_regimento SERIAL NOT NULL PRIMARY KEY,
+    regimento VARCHAR(500)
+);
 
-    INSERT INTO IMPORTANCIA (importancia) VALUES
-    ('Importante'),
-    ('Urgente'),
-    ('Crítico');
+CREATE TABLE CONDOMINIO (
+    cnpj VARCHAR(14),
+    nome VARCHAR(100),
+    qtd_divisoes INTEGER,
+    codigo_condominio VARCHAR(6) PRIMARY KEY,
+    senha VARCHAR(80),
+    email VARCHAR(100),
+    FK_REGIMENTO_codigo_regimento INTEGER,
+    FK_TIPO_MORADIA_codigo_tipo_moradia INTEGER,
+    FK_ENDERECO_codigo_endereco INTEGER,
+    FK_FAIXA_QTD_MORADORES_codigo_faixa INTEGER,
 
-    INSERT INTO POSTAGEM (data_hora_postagem, descricao, titulo, FK_USUARIO_cpf)
-    VALUES
-        ('2023-05-09 10:15:00', 'Conjunto de panelas antiaderente, conjunto com 5 peças', 'Conjunto de Panelas', '31589904263'),
-        ('2023-05-09 13:45:00', 'Camiseta masculina, tamanho P, cor azul marinho', 'Camiseta Masculina', '49628092010'),
-        ('2023-05-09 16:30:00', 'Smartphone Samsung Galaxy S21, 128GB, cor preta', 'Smartphone Samsung Galaxy S21', '31589904263'),
-        ('2023-05-09 18:45:00', 'Kit de maquiagem com 10 itens, incluindo batom, sombra e pincéis', 'Kit de Maquiagem', '42155708213'),
-        ('2023-05-09 20:00:00', 'Luminária de mesa em madeira e metal, com cúpula em tecido', 'Luminária de Mesa', '49628092010'),
-        ('2023-05-09 21:30:00', 'Ração para cachorro, marca Pedigree, sabor frango e legumes, 1kg', 'Ração para Cachorro', '42155708213'),
-        ('2023-05-10 09:00:00', 'Limpeza de ar-condicionado, serviço de limpeza em domicílio', 'Limpeza de Ar-Condicionado', '86361974530'),
-        ('2023-05-09 10:15:00', 'Aviso sobre vazamento na piscina do condomínio', 'Vazamento na Piscina', '42155708213'),
-        ('2023-05-09 13:45:00', 'Aviso sobre reunião de condomínio para discussão de novas medidas', 'Reunião de Condomínio', '42155708213'),
-        ('2023-05-09 16:30:00', 'Aviso sobre manutenção do elevador', 'Manutenção do Elevador', '86361974530'),
-        ('2023-05-09 18:45:00', 'Aviso sobre obras no estacionamento', 'Obras no Estacionamento', '42155708213'),
-        ('2023-05-09 20:00:00', 'Aviso sobre troca do sistema de segurança do condomínio', 'Troca do Sistema de Segurança', '86361974530');
+    FOREIGN KEY(FK_REGIMENTO_codigo_regimento) REFERENCES REGIMENTO(codigo_regimento),
+    FOREIGN KEY(FK_TIPO_MORADIA_codigo_tipo_moradia) REFERENCES TIPO_MORADIA(codigo_tipo_moradia),
+    FOREIGN KEY(FK_ENDERECO_codigo_endereco) REFERENCES ENDERECO(codigo_endereco),
+    FOREIGN KEY(FK_FAIXA_QTD_MORADORES_codigo_faixa) REFERENCES FAIXA_QTD_MORADORES(codigo_faixa)
+);
 
-    INSERT INTO ANUNCIO (FK_POSTAGEM_codigo_postagem, FK_TAG_codigo)
-    VALUES
-        (8, 2),
-        (9, 2),
-        (10, 1),
-        (11, 1),
-        (12, 3);
+CREATE TABLE CONDOMINIO_DIVISAO(
+    FK_DIVISAO_codigo_divisao INTEGER,
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
+	
+    FOREIGN KEY(FK_DIVISAO_codigo_divisao) REFERENCES DIVISAO(codigo_divisao),
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio)
+);
 
-    INSERT INTO AVISO (FK_POSTAGEM_codigo_postagem, FK_IMPORTANCIA_codigo)
-    VALUES
-        (8, 2),
-        (9, 2),
-        (10, 1),
-        (11, 1),
-        (12, 3);
+CREATE TABLE CONDOMINIO_ESPACOS_PUBLICOS(
+    FK_ESPACOS_PUBLICOS_codigo_espacos_publicos INTEGER,
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
 
-    INSERT INTO IMAGEM (imagem, FK_POSTAGEM_codigo_postagem)
-    VALUES
-        ('https://exemplo.com/panelas.jpg', 1),
-        ('https://exemplo.com/camiseta.jpg', 2),
-        ('https://exemplo.com/smartphone.jpg', 3),
-        ('https://exemplo.com/maquiagem.jpg', 4),
-        ('https://exemplo.com/luminaria.jpg', 5),
-        ('https://exemplo.com/racao.jpg', 6),
-        ('https://exemplo.com/limpeza.jpg', 7),
-        ('https://exemplo.com/piscina.jpg', 8),
-        ('https://exemplo.com/reuniao.jpg', 9),
-        ('https://exemplo.com/elevador.jpg', 10),
-        ('https://exemplo.com/estacionamento.jpg', 11),
-        ('https://exemplo.com/seguranca.jpg', 12);
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
+    FOREIGN KEY(FK_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
+);
 
-    INSERT INTO FAVORITA (fk_USUARIO_cpf, fk_POSTAGEM_codigo_postagem)
-    VALUES
-        ('49628092010', 1),
-        ('31589904263', 1),
-        ('49628092010', 2),
-        ('72815390627', 2),
-        ('31589904263', 3),
-        ('31589904263', 4),
-        ('42155708213', 4),
-        ('86361974530', 4),
-        ('49628092010', 5),
-        ('42155708213', 6),
-        ('49628092010', 7),
-        ('72815390627', 7),
-        ('49628092010', 3),
-        ('31589904263', 3),
-        ('72815390627', 3),
-        ('49628092010', 3),
-        ('49628092010', 1),
-        ('31589904263', 5),
-        ('86361974530', 5),
-        ('86361974530', 1),
-        ('72815390627', 5),
-        ('49628092010', 2),
-        ('31589904263', 2),
-        ('72815390627', 2),
-        ('86361974530', 2);
+-- MORADIA
+CREATE TABLE NUM_MORADIA (
+    codigo_num_moradia SERIAL NOT NULL PRIMARY KEY,
+    numero_moradia VARCHAR(4)
+);
+
+CREATE TABLE MORADIA (
+    codigo_moradia SERIAL NOT NULL PRIMARY KEY,
+    FK_DIVISAO_codigo_divisao INTEGER,
+    FK_NUM_MORADIA_codigo_num_moradia INTEGER,
+
+    FOREIGN KEY(FK_DIVISAO_codigo_divisao) REFERENCES DIVISAO(codigo_divisao),
+    FOREIGN KEY(FK_NUM_MORADIA_codigo_num_moradia) REFERENCES NUM_MORADIA(codigo_num_moradia)
+);
+
+-- USUARIO
+CREATE TABLE NIVEL_PERMISSAO (
+    codigo_nivel_permissao SERIAL PRIMARY KEY,
+    tipo VARCHAR(15)
+);
+
+CREATE TABLE USUARIO (
+    cpf VARCHAR(14) PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(256),
+    senha VARCHAR(80),
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
+    FK_NIVEL_PERMISSAO_codigo_nivel_permissao INTEGER,
+    FK_MORADIA_codigo_moradia INTEGER,
+
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
+    FOREIGN KEY(FK_NIVEL_PERMISSAO_codigo_nivel_permissao) REFERENCES NIVEL_PERMISSAO(codigo_nivel_permissao),
+    FOREIGN KEY(FK_MORADIA_codigo_moradia) REFERENCES MORADIA(codigo_moradia)
+);
+
+CREATE TABLE USUARIO_IMAGEM(
+    FK_USUARIO_cpf VARCHAR(14),
+    FK_IMAGEM_codigo_imagem SERIAL,
+
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem)
+);
+
+-- POSTAGEM
+CREATE TABLE POSTAGEM (
+    codigo_postagem SERIAL NOT NULL PRIMARY KEY,
+    data_hora_postagem TIMESTAMP,
+    descricao VARCHAR(4000),
+    titulo VARCHAR(100),
+    FK_USUARIO_cpf VARCHAR(14),
+
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf)
+);
+
+CREATE TABLE POSTAGEM_IMAGEM (
+    FK_POSTAGEM_codigo_postagem SERIAL,
+    FK_IMAGEM_codigo_imagem SERIAL,
+
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem),
+    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem)
+);
+
+CREATE TABLE TAG(
+    codigo_tag SERIAL NOT NULL PRIMARY KEY,
+    tag VARCHAR(20)
+);
+
+CREATE TABLE ANUNCIO (
+    FK_TAG_codigo_tag INTEGER,
+    FK_POSTAGEM_codigo_postagem INTEGER PRIMARY KEY,
+
+    FOREIGN KEY(FK_TAG_codigo_tag) REFERENCES TAG(codigo_tag),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+CREATE TABLE IMPORTANCIA (
+    codigo_importancia SERIAL NOT NULL PRIMARY KEY,
+    importancia VARCHAR(20)
+);
+
+CREATE TABLE AVISO (
+    FK_IMPORTANCIA_codigo_importancia INTEGER,
+    FK_POSTAGEM_codigo_postagem INTEGER PRIMARY KEY,
+
+    FOREIGN KEY(FK_IMPORTANCIA_codigo_importancia) REFERENCES IMPORTANCIA(codigo_importancia),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+-- USUARIO E POSTAGEM
+CREATE TABLE Favorita (
+    FK_USUARIO_cpf VARCHAR(14),
+    FK_POSTAGEM_codigo_postagem SERIAL,
+	
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+-- USUARIO E ESPAÇO PUBLICO
+CREATE TABLE Reserva (
+    FK_USUARIO_cpf VARCHAR(14),
+    FK_ESPACOS_PUBLICOS_codigo_espacos_publicos INTEGER,
+    data DATE,
+    hora_entrada TIME,
+    hora_saida TIME,
+    codigo_reserva SERIAL PRIMARY KEY,
+
+   FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+   FOREIGN KEY(FK_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
+);
+
 
         
 #### 12 PRINCIPAIS CONSULTAS DO SISTEMA 
