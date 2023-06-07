@@ -231,207 +231,246 @@ b) Todos estão usando da mesma tabela.
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3ba9f906-be80-42c5-9cc4-d95a93d2ebb5)
 
 ### 10	MODELO FÍSICO<br>
-        CREATE TABLE NIVEL_PERMISSAO (
-        codigo_nivel_permissao SERIAL PRIMARY KEY,
-        tipo VARCHAR(15)
-    );
+       CREATE TABLE IMAGEM (
+    codigo_imagem SERIAL NOT NULL PRIMARY KEY,
+    imagem VARCHAR(500)
+);
 
-    CREATE TABLE TIPO_LOGRADOURO (
-        codigo_tipo_logradouro SERIAL PRIMARY KEY,
-        nome VARCHAR(60)
-    );
+-- ENDEREÇO
+CREATE TABLE TIPO_LOGRADOURO (
+    codigo_tipo_logradouro SERIAL PRIMARY KEY,
+    nome VARCHAR(60)
+);
 
-    CREATE TABLE PAIS (
-        codigo_pais SERIAL PRIMARY KEY,
-        nome VARCHAR(41)
-    );
+CREATE TABLE PAIS (
+    codigo_pais SERIAL PRIMARY KEY,
+    nome VARCHAR(41)
+);
 
-    CREATE TABLE ESTADO (
-        codigo_estado SERIAL PRIMARY KEY,
-        FK_PAIS_codigo_pais integer,
-        uf VARCHAR(2),
-        FOREIGN KEY (FK_PAIS_codigo_pais) REFERENCES PAIS (codigo_pais)
-    );
+CREATE TABLE ESTADO (
+    codigo_estado SERIAL PRIMARY KEY,
+    uf VARCHAR(2),
+    FK_PAIS_codigo_pais INTEGER,
 
-    CREATE TABLE CIDADE (
-        codigo_cidade SERIAL PRIMARY KEY,
-    FK_ESTADO_codigo_estado integer,
-        nome VARCHAR(58),
-        FOREIGN KEY (FK_ESTADO_codigo_estado) REFERENCES ESTADO (codigo_estado)
-    );
+    FOREIGN KEY(FK_PAIS_codigo_pais) REFERENCES PAIS(codigo_pais)
+);
 
-    CREATE TABLE BAIRRO (
-        codigo_bairro SERIAL PRIMARY KEY,
-    FK_CIDADE_codigo_cidade integer,
-        nome VARCHAR(60),
-        FOREIGN KEY (FK_CIDADE_codigo_cidade) REFERENCES CIDADE (codigo_cidade)
-    );
+CREATE TABLE CIDADE (
+    codigo_cidade SERIAL PRIMARY KEY,
+    nome VARCHAR(58),
+    FK_ESTADO_codigo_estado INTEGER,
 
-    CREATE TABLE ENDERECO (
-        codigo_endereco SERIAL PRIMARY KEY,
-        numero integer,
-    FK_TIPO_LOGRADOURO_codigo_tipo_logradouro integer,
-        desc_logradouro VARCHAR(200),
-    FK_BAIRRO_codigo_bairro integer,
-        cep VARCHAR(9),
-        FOREIGN KEY (FK_TIPO_LOGRADOURO_codigo_tipo_logradouro) REFERENCES TIPO_LOGRADOURO (codigo_tipo_logradouro),
-        FOREIGN KEY (FK_BAIRRO_codigo_bairro) REFERENCES BAIRRO (codigo_bairro)
-    );
+    FOREIGN KEY(FK_ESTADO_codigo_estado) REFERENCES ESTADO(codigo_estado)
+);
 
-    CREATE TABLE TIPO_MORADIA (
-        codigo_tipo_moradia SERIAL PRIMARY KEY,
-        nome VARCHAR(24)
-    );
+CREATE TABLE BAIRRO (
+    codigo_bairro SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(60),
+    FK_CIDADE_codigo_cidade INTEGER,
 
-    CREATE TABLE FAIXA_QTD_MORADORES (
-        codigo_faixa SERIAL PRIMARY KEY,
-        faixa_qtd VARCHAR(10)
-    );
+    FOREIGN KEY(FK_CIDADE_codigo_cidade) REFERENCES CIDADE(codigo_cidade)
+);
 
-    CREATE TABLE TIPO_DIVISAO (
-        codigo_tipo_divisao SERIAL PRIMARY KEY,
-        nome VARCHAR(80)
-    );
+CREATE TABLE ENDERECO (
+    codigo_endereco SERIAL PRIMARY KEY,
+    numero INTEGER,
+    desc_logradouro VARCHAR(200),
+    cep VARCHAR(8),
+    FK_TIPO_LOGRADOURO_codigo_tipo_logradouro INTEGER,
+    FK_BAIRRO_codigo_bairro INTEGER,
 
-    CREATE TABLE DIVISAO (
-        codigo_divisao SERIAL PRIMARY KEY,
-    FK_TIPO_DIVISAO_codigo_tipo_divisao integer,
-        desc_divisao VARCHAR(100),
-        FOREIGN KEY (FK_TIPO_DIVISAO_codigo_tipo_divisao) REFERENCES TIPO_DIVISAO (codigo_tipo_divisao) 
-    );
+    FOREIGN KEY(FK_TIPO_LOGRADOURO_codigo_tipo_logradouro) REFERENCES TIPO_LOGRADOURO(codigo_tipo_logradouro),
+    FOREIGN KEY(FK_BAIRRO_codigo_bairro) REFERENCES BAIRRO(codigo_bairro)
+);
 
+-- CONDOMINIO
+CREATE TABLE TIPOS_ESPACOS_PUBLICOS (
+    codigo_tipos_espacos_publicos SERIAL PRIMARY KEY,
+    nome VARCHAR(50)
+);
 
-    CREATE TABLE NUM_MORADIA (
-        codigo SERIAL PRIMARY KEY,
-        numero_moradia VARCHAR(4)
-    );
+CREATE TABLE ESPACOS_PUBLICOS (
+    codigo_espacos_publicos SERIAL PRIMARY KEY,
+    nome VARCHAR(200),
+    FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos INTEGER,
 
+    FOREIGN KEY(FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos) REFERENCES TIPOS_ESPACOS_PUBLICOS(codigo_tipos_espacos_publicos)
+);
 
-    CREATE TABLE MORADIA (
-        codigo SERIAL PRIMARY KEY,
-    fk_DIVISAO_codigo_divisao integer,
-    fk_NUM_MORADIA_codigo integer,
-        FOREIGN KEY (fk_DIVISAO_codigo_divisao) REFERENCES DIVISAO (codigo_divisao),
-        FOREIGN KEY (fk_NUM_MORADIA_codigo) REFERENCES NUM_MORADIA (codigo)
-    );
+CREATE TABLE TIPO_MORADIA (
+    codigo_tipo_moradia SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(12)
+);
 
+CREATE TABLE FAIXA_QTD_MORADORES (
+    codigo_faixa SERIAL NOT NULL PRIMARY KEY,
+    faixa_qtd VARCHAR(7)
+);
 
-    CREATE TABLE CONDOMINIO (
-        cnpj VARCHAR(14),
-        nome VARCHAR(100),
-        qtd_divisoes INT,
-        codigo_condominio VARCHAR(9) PRIMARY KEY,
-        regimento VARCHAR(4000),
-    FK_TIPO_MORADIA_codigo_tipo_moradia integer,
-    FK_ENDERECO_codigo_endereco integer,
-    FK_FAIXA_QTD_MORADORES_codigo_faixa integer,
-        FOREIGN KEY (FK_TIPO_MORADIA_codigo_tipo_moradia) REFERENCES TIPO_MORADIA (codigo_tipo_moradia),
-        FOREIGN KEY (FK_ENDERECO_codigo_endereco) REFERENCES ENDERECO (codigo_endereco),
-        FOREIGN KEY (FK_FAIXA_QTD_MORADORES_codigo_faixa) REFERENCES FAIXA_QTD_MORADORES (codigo_faixa)
-    );
+CREATE TABLE TIPO_DIVISAO (
+    codigo_tipo_divisao SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(80)
+);
 
-    CREATE TABLE USUARIO (
-        cpf VARCHAR(14) PRIMARY KEY,
-        nome VARCHAR(100),
-        email VARCHAR(256),
-        senha VARCHAR(80),
-        imagem VARCHAR(500),
-    FK_CONDOMINIO_codigo_condominio VARCHAR(9),
-    FK_NIVEL_PERMISSAO_codigo_nivel_permissao integer,
-    FK_MORADIA_codigo integer,
-        FOREIGN KEY (FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO (codigo_condominio),
-        FOREIGN KEY (FK_NIVEL_PERMISSAO_codigo_nivel_permissao) REFERENCES NIVEL_PERMISSAO (codigo_nivel_permissao),
-        FOREIGN KEY (FK_MORADIA_codigo) REFERENCES MORADIA (codigo)
-    );
+CREATE TABLE DIVISAO (
+    codigo_divisao SERIAL NOT NULL PRIMARY KEY,
+    desc_divisao VARCHAR(100),
+    FK_TIPO_DIVISAO_codigo_tipo_divisao INTEGER,
 
-    CREATE TABLE TIPOS_ESPACOS_PUBLICOS (
-        codigo_tipos_espacos_publicos SERIAL PRIMARY KEY,
-        nome VARCHAR(50)
-    );
+    FOREIGN KEY(FK_TIPO_DIVISAO_codigo_tipo_divisao) REFERENCES TIPO_DIVISAO(codigo_tipo_divisao)
+);
 
-    CREATE TABLE ESPACOS_PUBLICOS (
-        codigo_espacos_publicos SERIAL PRIMARY KEY,
-        nome VARCHAR(100),
-    FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos integer,
-        FOREIGN KEY (FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos) REFERENCES TIPOS_ESPACOS_PUBLICOS (codigo_tipos_espacos_publicos)
-    );
+CREATE TABLE REGIMENTO (
+    codigo_regimento SERIAL NOT NULL PRIMARY KEY,
+    regimento VARCHAR(500)
+);
 
+CREATE TABLE CONDOMINIO (
+    cnpj VARCHAR(14),
+    nome VARCHAR(100),
+    qtd_divisoes INTEGER,
+    codigo_condominio VARCHAR(6) PRIMARY KEY,
+    senha VARCHAR(80),
+    email VARCHAR(100),
+    FK_REGIMENTO_codigo_regimento INTEGER,
+    FK_TIPO_MORADIA_codigo_tipo_moradia INTEGER,
+    FK_ENDERECO_codigo_endereco INTEGER,
+    FK_FAIXA_QTD_MORADORES_codigo_faixa INTEGER
 
-    CREATE TABLE RESERVA (
-    fk_USUARIO_cpf VARCHAR(14),
-    fk_ESPACOS_PUBLICOS_codigo_espacos_publicos integer,
-        data DATE,
-        hora_entrada TIME,
-        hora_saida TIME,
-        codigo_reserva SERIAL PRIMARY KEY,
-    FOREIGN KEY (fk_USUARIO_cpf) REFERENCES USUARIO(cpf),
-        FOREIGN KEY (fk_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
-    );
+    FOREIGN KEY(FK_REGIMENTO_codigo_regimento) REFERENCES REGIMENTO(codigo_regimento),
+    FOREIGN KEY(FK_TIPO_MORADIA_codigo_tipo_moradia) REFERENCES TIPO_MORADIA(codigo_tipo_moradia),
+    FOREIGN KEY(FK_ENDERECO_codigo_endereco) REFERENCES ENDERECO(codigo_endereco),
+    FOREIGN KEY(FK_FAIXA_QTD_MORADORES_codigo_faixa) REFERENCES FAIXA_QTD_MORADORES(codigo_faixa)
+);
 
+CREATE TABLE CONDOMINIO_DIVISAO(
+    FK_DIVISAO_codigo_divisao INTEGER,
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
+	
+    FOREIGN KEY(FK_DIVISAO_codigo_divisao) REFERENCES DIVISAO(codigo_divisao),
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio)
+);
 
-    CREATE TABLE DIVISAO_CONDOMINIO (
-    fk_DIVISAO_codigo_divisao integer,
-    fk_CONDOMINIO_codigo_condominio VARCHAR(9),
-        FOREIGN KEY(fk_DIVISAO_codigo_divisao) REFERENCES DIVISAO(codigo_divisao),
-        FOREIGN KEY (fk_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio)
-    );
+CREATE TABLE CONDOMINIO_ESPACOS_PUBLICOS(
+    FK_ESPACOS_PUBLICOS_codigo_espacos_publicos INTEGER,
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
 
-    CREATE TABLE CONDOMINIO_ESPACOS_PUBLICOS (
-    fk_CONDOMINIO_codigo_condominio VARCHAR(9),
-    fk_ESPACOS_PUBLICOS_codigo_espacos_publicos integer,
-        FOREIGN KEY (fk_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
-        FOREIGN KEY (fk_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
-    );
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
+    FOREIGN KEY(FK_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
+);
 
-    CREATE TABLE TAG (
-        codigo SERIAL PRIMARY KEY,
-        tag VARCHAR(80)
-    );
+-- MORADIA
+CREATE TABLE NUM_MORADIA (
+    codigo_num_moradia SERIAL NOT NULL PRIMARY KEY,
+    numero_moradia VARCHAR(4)
+);
 
-    CREATE TABLE IMPORTANCIA (
-        codigo SERIAL PRIMARY KEY,
-        importancia VARCHAR(80)
-    );
+CREATE TABLE MORADIA (
+    codigo_moradia SERIAL NOT NULL PRIMARY KEY,
+    FK_DIVISAO_codigo_divisao INTEGER,
+    FK_NUM_MORADIA_codigo_num_moradia INTEGER,
 
+    FOREIGN KEY(FK_DIVISAO_codigo_divisao) REFERENCES DIVISAO(codigo_divisao),
+    FOREIGN KEY(FK_NUM_MORADIA_codigo_num_moradia) REFERENCES NUM_MORADIA(codigo_num_moradia)
+);
 
-    CREATE TABLE POSTAGEM (
-        codigo_postagem SERIAL PRIMARY KEY,
-        data_hora_postagem TIMESTAMP,
-        descricao VARCHAR(4000),
-        titulo VARCHAR(100),
+-- USUARIO
+CREATE TABLE NIVEL_PERMISSAO (
+    codigo_nivel_permissao SERIAL PRIMARY KEY,
+    tipo VARCHAR(15)
+);
+
+CREATE TABLE USUARIO (
+    cpf VARCHAR(14) PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(256),
+    senha VARCHAR(80),
+    FK_IMAGEM_codigo_imagem INTEGER,
+    FK_CONDOMINIO_codigo_condominio VARCHAR(6),
+    FK_NIVEL_PERMISSAO_codigo_nivel_permissao INTEGER,
+    FK_MORADIA_codigo_moradia INTEGER,
+
+    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem),
+    FOREIGN KEY(FK_CONDOMINIO_codigo_condominio) REFERENCES CONDOMINIO(codigo_condominio),
+    FOREIGN KEY(FK_NIVEL_PERMISSAO_codigo_nivel_permissao) REFERENCES NIVEL_PERMISSAO(codigo_nivel_permissao),
+    FOREIGN KEY(FK_MORADIA_codigo_moradia) REFERENCES MORADIA(codigo_moradia)
+);
+
+CREATE TABLE USUARIO_IMAGEM(
     FK_USUARIO_cpf VARCHAR(14),
-        FOREIGN KEY (FK_USUARIO_cpf) REFERENCES USUARIO(cpf)
-    );
+    FK_IMAGEM_codigo_imagem SERIAL,
 
-    CREATE TABLE ANUNCIO (
-    FK_POSTAGEM_codigo_postagem integer,
-    FK_TAG_codigo integer,
-        FOREIGN KEY (FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem),
-        FOREIGN KEY (FK_TAG_codigo) REFERENCES TAG(codigo)
-    );
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem)
+);
 
+-- POSTAGEM
+CREATE TABLE POSTAGEM (
+    codigo_postagem SERIAL NOT NULL PRIMARY KEY,
+    data_hora_postagem TIMESTAMP,
+    descricao VARCHAR(4000),
+    titulo VARCHAR(100),
+    FK_USUARIO_cpf VARCHAR(14),
 
-    CREATE TABLE AVISO (
-    FK_POSTAGEM_codigo_postagem integer,
-    FK_IMPORTANCIA_codigo integer,
-        FOREIGN KEY (FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem),
-        FOREIGN KEY (FK_IMPORTANCIA_codigo) REFERENCES IMPORTANCIA(codigo)
-    );
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf)
+);
 
-    CREATE TABLE IMAGEM (
-        imagem_PK SERIAL NOT NULL PRIMARY KEY,
-        imagem VARCHAR(500),
-    FK_POSTAGEM_codigo_postagem integer,
-        FOREIGN KEY (FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
-    );
+CREATE TABLE POSTAGEM_IMAGEM (
+    FK_POSTAGEM_codigo_postagem SERIAL,
+    FK_IMAGEM_codigo_imagem SERIAL,
 
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem),
+    FOREIGN KEY(FK_IMAGEM_codigo_imagem) REFERENCES IMAGEM(codigo_imagem)
+);
 
-    CREATE TABLE FAVORITA (
-    fk_USUARIO_cpf VARCHAR(14),
-    fk_POSTAGEM_codigo_postagem integer,
-        FOREIGN KEY (fk_USUARIO_cpf) REFERENCES USUARIO(cpf),
-        FOREIGN KEY (fk_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
-    );
+CREATE TABLE TAG(
+    codigo_tag SERIAL NOT NULL PRIMARY KEY,
+    tag VARCHAR(20)
+);
+
+CREATE TABLE ANUNCIO (
+    FK_TAG_codigo_tag INTEGER,
+    FK_POSTAGEM_codigo_postagem INTEGER PRIMARY KEY,
+
+    FOREIGN KEY(FK_TAG_codigo_tag) REFERENCES TAG(codigo_tag),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+CREATE TABLE IMPORTANCIA (
+    codigo_importancia SERIAL NOT NULL PRIMARY KEY
+    importancia VARCHAR(20) PRIMARY KEY
+);
+
+CREATE TABLE AVISO (
+    FK_IMPORTANCIA_codigo_importancia INTEGER,
+    FK_POSTAGEM_codigo_postagem INTEGER PRIMARY KEY,
+
+    FOREIGN KEY(FK_IMPORTANCIA_codigo_importancia) REFERENCES IMPORTANCIA(codigo_importancia),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+-- USUARIO E POSTAGEM
+CREATE TABLE Favorita (
+    FK_USUARIO_cpf VARCHAR(14),
+    FK_POSTAGEM_codigo_postagem SERIAL,
+	
+    FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+    FOREIGN KEY(FK_POSTAGEM_codigo_postagem) REFERENCES POSTAGEM(codigo_postagem)
+);
+
+-- USUARIO E ESPAÇO PUBLICO
+CREATE TABLE Reserva (
+    FK_USUARIO_cpf VARCHAR(14),
+    FK_ESPACOS_PUBLICOS_codigo_espacos_publicos INTEGER,
+    data DATE,
+    hora_entrada TIME,
+    hora_saida TIME,
+    codigo_reserva SERIAL PRIMARY KEY,
+
+   FOREIGN KEY(FK_USUARIO_cpf) REFERENCES USUARIO(cpf),
+   FOREIGN KEY(FK_ESPACOS_PUBLICOS_codigo_espacos_publicos) REFERENCES ESPACOS_PUBLICOS(codigo_espacos_publicos)
+);
+
        
 ### 11	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
     -- Insert data into the NIVEL_PERMISSAO table
