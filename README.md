@@ -64,6 +64,7 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 * Mostrar quantas vezes cada tipo de importância foi utilizado.
 * Mostrar quantas vezes cada tag foi utilizada nos anúncios.
 * Mostrar a quantidade de espaços públicos em cada condomínio.
+* Mostra o percentual de quantos condominios possuem certo tipo de moradia
  
  #### 6.MODELO CONCEITUAL<br>
  A) ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/f28e5a02-0124-4d98-bb7e-bf8dcf9fbba4)
