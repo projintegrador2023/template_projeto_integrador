@@ -223,7 +223,7 @@ b) Todos estão usando da mesma tabela.
 <img src="arquivos/tabelaConceitual.jpeg"/> <br>
         
 ### 9	MODELO LÓGICO<br>
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3ba9f906-be80-42c5-9cc4-d95a93d2ebb5)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/cfd312c3-c7d6-4ce2-9335-4fcd3f90af7e)
 
 ### 10	MODELO FÍSICO<br>
        CREATE TABLE IMAGEM (
