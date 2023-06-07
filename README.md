@@ -29,16 +29,16 @@ O Domos é uma plataforma web e mobile para a comunicação e organização em c
 #### 3.2. Requisitos funcionais e não funcionais
 **Requisitos funcionais**
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/ae985059-0a2e-4226-bcae-24d67c937f9e)
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/24ed9047-1aee-4fdc-b8ad-fbe7a1773f15)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/24ed9047-1aee-4fdc-b8ad-fbe7a1773f15) <br>
 **Requisitos não funcionais**
-![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/44700410-2a40-4e5d-bf85-772a2bf2ea06)
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/44700410-2a40-4e5d-bf85-772a2bf2ea06) <br>
 
 
 #### 3.3 Validação da Ideia.
 **Formulário:** https://docs.google.com/forms/d/1UVo8cfiToc55kceu3vzgRaVAiUsT3d8eUm1UVY6vaIY/edit <br>
 **Relatório:** https://www.canva.com/design/DAFjLUgTWOE/O7eW_Np8ccUgRKZSzz4PeQ/edit?analyticsCorrelationId=5fb6e34d-741c-49a8-8a73-0285c9f5ed47
 
-### 4.Personas e Histórias de usuário<br>
+### 4.Personas e Histórias de usuário
 a) <img src="arquivos/persona.png"/> <br>
 <img src="arquivos/persona (1).png"/> <br>
 <img src="arquivos/persona (2).png"/> <br>
