@@ -71,9 +71,6 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
     C) Os principais fluxos de informação desse sistema são USUÁRIO, POSTAGEM e CONDOMÍNIO
 
 #### 7 Descrição dos dados 
-    NIVEL_PERMISSAO: tabela que armazena as informações do nível de permissão (síndico, morador e administrador) 
-    - código_nivel_permissao: Chave primária que identifica o nível de permissão.
-    - tipo: Uma string de até 15 caracteres que descreve o tipo de permissão.
 
     TIPO_LOGRADOURO: tabela que armazena as informações do tipo de logradouro
     - codigo_tipo_logradouro: Chave primária que identifica o tipo de logradouro.
@@ -85,26 +82,29 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
 
     ESTADO:  tabela que armazena as informações do estado
     - codigo_estado: Chave primária que identifica o estado.
-    - FK_PAIS_codigo_pais: Chave estrangeira que faz referência ao código do país ao qual o estado pertence.
     - uf: Uma string de até 2 caracteres que representa a sigla do estado.
 
     CIDADE:  tabela que armazena as informações da cidade 
     - codigo_cidade: Chave primária que identifica a cidade.
-    - FK_ESTADO_codigo_estado: Chave estrangeira que faz referência ao código do estado ao qual a cidade pertence.
     - nome: Uma string de até 58 caracteres que representa o nome da cidade.
 
     BAIRRO:  tabela que armazena as informações do bairro
     - codigo_bairro: Chave primária que identifica o bairro.
-    - FK_CIDADE_codigo_cidade: Chave estrangeira que faz referência ao código da cidade à qual o bairro pertence.
     - nome: Uma string de até 60 caracteres que representa o nome do bairro.
 
     ENDERECO:  tabela que armazena as informações do país
     - codigo_endereco: Chave primária que identifica o endereço.
     - numero: Um número inteiro que representa o número do endereço.
-    - FK_TIPO_LOGRADOURO_codigo_tipo_logradouro: Chave estrangeira que faz referência ao código do tipo de logradouro do endereço.
     - desc_logradouro: Uma string de até 200 caracteres que descreve o logradouro do endereço.
-    - FK_BAIRRO_codigo_bairro: Chave estrangeira que faz referência ao código do bairro do endereço.
     - cep: Uma string de até 9 caracteres que representa o CEP do endereço.
+	
+	TIPOS_ESPACOS_PUBLICOS:  tabela que armazena as informações dos tipos de espaço público
+    - codigo_tipos_espacos_publicos: Chave primária que identifica o tipo de espaço público.
+    - nome: Uma string de até 50 caracteres que representa o nome do tipo de espaço público.
+	
+	ESPACOS_PUBLICOS:  tabela que armazena as informações dos espaços publicos
+    - codigo_espacos_publicos: Chave primária que identifica o espaço público.
+    - nome: Uma string de até 100 caracteres que representa o nome do espaço público.
 
     TIPO_MORADIA:  tabela que armazena as informações do tipo de moradia (casa, ap etc)
     - codigo_tipo_moradia: Chave primária que identifica o tipo de moradia.
@@ -114,103 +114,76 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
     - codigo_faixa: Chave primária que identifica a faixa de quantidade de moradores.
     - faixa_qtd: Uma string de até 10 caracteres que descreve a faixa de quantidade de moradores.
 
-    TIPO_DIVISAO:  tabela que armazena as informações do tipo de divisão (bloco, setor etc)
-    - codigo_tipo_divisao: Chave primária que identifica o tipo de divisão.
-    - nome: Uma string de até 80 caracteres que representa o nome do tipo de divisão.
-
     DIVISAO:  tabela que armazena as informações da divisão (A B C, rosa girassol etc)
     - codigo_divisao: Chave primária que identifica a divisão.
-    - FK_TIPO_DIVISAO_codigo_tipo_divisao: Chave estrangeira que faz referência ao código do tipo de divisão da divisão.
     - desc_divisao: Uma string de até 100 caracteres que descreve a divisão.
-
-    NUM_MORADIA:  tabela que armazena as informações do número da moradia (101, 25 etc)
-    - codigo: Chave primária que identifica o número de moradia.
-    - numero_moradia: Uma string de até 4 caracteres que representa o número de moradia.
-
-    MORADIA:  tabela que armazena as informações da moradia
-    - codigo: Chave primária que identifica a moradia.
-    - fk_DIVISAO_codigo_divisao: Chave estrangeira que faz referência ao código da divisão da moradia.
-    - fk_NUM_MORADIA_codigo: Chave estrangeira que faz referência ao código do número de moradia da moradia.
+	
+	TIPO_DIVISAO:  tabela que armazena as informações do tipo de divisão (bloco, setor etc)
+    - codigo_tipo_divisao: Chave primária que identifica o tipo de divisão.
+    - nome: Uma string de até 80 caracteres que representa o nome do tipo de divisão.
+	
+	REGIMENTO: tabela que armazena as informações do regimento.
+	codigo_regimento: Chave primária que identifica o código do regimento.
+	regimento: Uma string de até 500 caracteres que representa o regimento.
 
     CONDOMINIO:  tabela que armazena as informações do condomínio 
     - cnpj: Uma string de até 14 caracteres que representa o CNPJ do condomínio.
     - nome: Uma string de até 100 caracteres que representa o nome do condomínio.
     - qtd_divisoes: Um número inteiro que representa a quantidade de divisões no condomínio.
     - codigo_condominio: Chave primária que identifica o condomínio.
-    - regimento: Uma string de até 4000 caracteres que representa o regimento do condomínio.
     - senha: Uma string de até 80 caracteres que representa a senha da conta do condomínio.
     - email: Uma string de até 100 caracteres que representa o email do condomínio.
-    - FK_TIPO_MORADIA_codigo_tipo_moradia: Chave estrangeira que faz referência ao código do tipo de moradia do condomínio.
-    - FK_ENDERECO_codigo_endereco: Chave estrangeira que faz referência ao código do endereço do condomínio.
-    - FK_FAIXA_QTD_MORADORES_codigo_faixa: Chave estrangeira que faz referência ao código da faixa de quantidade de moradores do condomínio.
+	
+	CONDOMINIO_DIVISAO:  tabela de relaçao que armazena as informações da divisão com o condomínio
+
+    CONDOMINIO_ESPACOS_PUBLICOS: tabela de relaçao que armazena as informações dos espaços públicos com o condomínio
+	
+	NUM_MORADIA:  tabela que armazena as informações do número da moradia (101, 25 etc)
+    - codigo: Chave primária que identifica o número de moradia.
+    - numero_moradia: Uma string de até 4 caracteres que representa o número de moradia.
+
+    MORADIA:  tabela que armazena as informações da moradia
+    - codigo: Chave primária que identifica a moradia.
+    
+	NIVEL_PERMISSAO: tabela que armazena as informações do nivel de permissão
+	codigo_nivel_permissao: Chave primária que identifica o nivel de permissão. 
+	tipo: Uma string de até 15 caracteres que representa o email do condomínio.
 
     USUARIO:  tabela que armazena as informações do usuário
     - cpf: Chave primária que identifica o usuário.
     - nome: Uma string de até 100 caracteres que representa o nome do usuário.
     - email: Uma string de até 256 caracteres que representa o e-mail do usuário.
     - senha: Uma string de até 80 caracteres que representa a senha do usuário.
-    - imagem: Uma string de até 500 caracteres que representa a imagem do usuário.
-    - FK_CONDOMINIO_codigo_condominio: Chave estrangeira que faz referência ao código do condomínio ao qual o usuário pertence.
-    - FK_NIVEL_PERMISSAO_codigo_nivel_permissao: Chave estrangeira que faz referência ao código do nível de permissão do usuário.
-    - FK_MORADIA_codigo: Chave estrangeira que faz referência ao código da moradia do usuário.
-
-    TIPOS_ESPACOS_PUBLICOS:  tabela que armazena as informações dos tipos de espaço público
-    - codigo_tipos_espacos_publicos: Chave primária que identifica o tipo de espaço público.
-    - nome: Uma string de até 50 caracteres que representa o nome do tipo de espaço público.
-
-    ESPACOS_PUBLICOS:  tabela que armazena as informações dos espaços publicos
-    - codigo_espacos_publicos: Chave primária que identifica o espaço público.
-    - nome: Uma string de até 100 caracteres que representa o nome do espaço público.
-    - FK_TIPOS_ESPACOS_PUBLICOS_codigo_tipos_espacos_publicos: Chave estrangeira que faz referência ao código do tipo de espaço público.
-
-    RESERVA:  tabela que armazena as informações da reserva
-    - fk_USUARIO_cpf: Chave estrangeira que faz referência ao CPF do usuário que fez a reserva.
-    - fk_ESPACOS_PUBLICOS_codigo_espacos_publicos: Chave estrangeira que faz referência ao código do espaço público reservado.
-    - data: Uma data que representa a data da reserva.
-    - hora_entrada: Uma hora que representa a hora de entrada da reserva.
-    - hora_saida: Uma hora que representa a hora de saída da reserva.
-    - codigo_reserva: Chave primária que identifica a reserva.
-
-    DIVISAO_CONDOMINIO:  tabela de relaçao que armazena as informações da divisão com o condomínio
-    - fk_DIVISAO_codigo_divisao: Chave estrangeira que faz referência ao código da divisão relacionada ao condomínio.
-    - fk_CONDOMINIO_codigo_condominio: Chave estrangeira que faz referência ao código do condomínio relacionado à divisão.
-
-    CONDOMINIO_ESPACOS_PUBLICOS: tabela de relaçao que armazena as informações dos espaços públicos com o condomínio
-
-    - fk_CONDOMINIO_codigo_condominio: Chave estrangeira que faz referência ao código do condomínio relacionado ao espaço público.
-    - fk_ESPACOS_PUBLICOS_codigo_espacos_publicos: Chave estrangeira que faz referência ao código do espaço público relacionado ao condomínio.
+	
+	USUARIO_IMAGEM: tabela que armazena as imagens do usuário
+	
+	POSTAGEM:  tabela que armazena as informações da postagem
+    - codigo_postagem: Chave primária que identifica a postagem.
+    - data_hora_postagem: Uma data e hora que representa a data e hora de postagem.
+    - descricao: Uma string de até 4000 caracteres que representa a descrição da postagem.
+    - titulo: Uma string de até 100 caracteres que representa o título da postagem.
+	
+	POSTAGEM_IMAGEM: tabela que armazena as imagens do usuário
 
     TAG:  tabela que armazena as informações das tags do anúncio (alimentação, serviços etc)
     - codigo: Chave primária que identifica a tag.
     - tag: Uma string de até 80 caracteres que representa a tag.
 
+    ANUNCIO:  tabela que armazena as informações do anúncio
+
     IMPORTANCIA:  tabela que armazena as informações da importância de cada aviso (importante, urgente e crítico)
     - codigo: Chave primária que identifica a importância.
     - importancia: Uma string de até 80 caracteres que representa a importância.
 
-    POSTAGEM:  tabela que armazena as informações da postagem
-    - codigo_postagem: Chave primária que identifica a postagem.
-    - data_hora_postagem: Uma data e hora que representa a data e hora de postagem.
-    - descricao: Uma string de até 4000 caracteres que representa a descrição da postagem.
-    - titulo: Uma string de até 100 caracteres que representa o título da postagem.
-    - FK_USUARIO_cpf: Chave estrangeira que faz referência ao CPF do usuário que fez a postagem.
-
-    ANUNCIO:  tabela que armazena as informações do anúncio
-    - FK_POSTAGEM_codigo_postagem: Chave estrangeira que faz referência ao código da postagem relacionada ao anúncio.
-    - FK_TAG_codigo: Chave estrangeira que faz referência ao código da tag relacionada ao anúncio.
-
-    AVISO:  tabela que armazena as informações do aviso
-    - FK_POSTAGEM_codigo_postagem: Chave estrangeira que faz referência ao código da postagem relacionada ao aviso.
-    - FK_IMPORTANCIA_codigo: Chave estrangeira que faz referência ao código da importância relacionada ao aviso.
-
-    IMAGEM:  tabela que armazena as informações da imagem
-    - imagem_PK: Chave primária que identifica a imagem.
-    - imagem: Uma string de até 500 caracteres que representa a imagem.
-    - FK_POSTAGEM_codigo_postagem: Chave estrangeira que faz referência ao código da postagem relacionada à imagem.
+	AVISO:  tabela que armazena as informações do aviso
 
     FAVORITA:  tabela de relaçao que armazena as informações das postagens favoritas
-    - fk_USUARIO_cpf: Chave estrangeira que faz referência ao CPF do usuário que favoritou a postagem.
-    - fk_POSTAGEM_codigo_postagem: Chave estrangeira que faz referência ao código da postagem favoritada pelo usuário.
+	
+	RESERVA:  tabela que armazena as informações da reserva
+    - data: Uma data que representa a data da reserva.
+    - hora_entrada: Uma hora que representa a hora de entrada da reserva.
+    - hora_saida: Uma hora que representa a hora de saída da reserva.
+    - codigo_reserva: Chave primária que identifica a reserva.
 
 
 ### 8	RASTREABILIDADE DOS ARTEFATOS<br>
