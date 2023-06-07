@@ -67,7 +67,7 @@ https://quant-ux.com/#/apps/6434194257bd5377df476056/design/s10000_67130.html
  
  #### 6.MODELO CONCEITUAL<br>
  A) ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/f28e5a02-0124-4d98-bb7e-bf8dcf9fbba4)
-    B) As principais entidades desse sistema em desenvolvimento são USUÁRIO, CONDOMÍNIO e POSTAGEM
+    B) As principais entidades desse sistema em desenvolvimento são USUÁRIO, CONDOMÍNIO e POSTAGEM <br>
     C) Os principais fluxos de informação desse sistema são USUÁRIO, POSTAGEM e CONDOMÍNIO
 
 #### 7 Descrição dos dados 
