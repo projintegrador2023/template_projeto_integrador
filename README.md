@@ -228,7 +228,7 @@ b) Todos estão usando da mesma tabela.
 <img src="arquivos/tabelaConceitual.jpeg"/> <br>
         
 ### 9	MODELO LÓGICO<br>
-<img src="arquivos/logicoCompleto.jpeg"/>
+![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/3ba9f906-be80-42c5-9cc4-d95a93d2ebb5)
 
 ### 10	MODELO FÍSICO<br>
         CREATE TABLE NIVEL_PERMISSAO (
