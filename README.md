@@ -193,8 +193,8 @@ Enquanto administrador, gostaria de criar avisos para publicar na aplicação: <
 
 Enquanto morador, gostaria de visualizar os avisos do síndico para  não perder informações: <img src="arquivos/avisosMorador.jpeg"/> <br>
 
-b) Todos estão usando da mesma tabela. 
-<img src="arquivos/tabelaConceitual.jpeg"/> <br>
+b) Todos estão usando da mesma tabela. <br>
+<img src="arquivos/tabelaConceitual.jpeg"/> 
         
 ### 9	MODELO LÓGICO<br>
 ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/cfd312c3-c7d6-4ce2-9335-4fcd3f90af7e)
