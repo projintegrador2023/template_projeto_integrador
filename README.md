@@ -847,13 +847,9 @@ VALUES
      GROUP BY nome_tipo_moradia <br>
      ![image](https://github.com/projintegrador2023/template_projeto_integrador/assets/127967558/6f703a8d-c1a2-46cf-83d2-588c584c7746) <br>
 
- <br>
-  a) Você deve apresentar as consultas em formato SQL para cad um dos relatórios.
- <br>
-  b) Além da consulta deve ser apresentada uma imagem com o resultado obtido para cada consulta.<br>
-
  ### 13 Gráficos, relatórios, integração com Linguagem de programação e outras solicitações.<br>
      OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
+     https://colab.research.google.com/drive/13nVozNQjaOaS75BLCi7XpIz4VG8T6dj7?authuser=1#scrollTo=P2G05MqfxFYj
  #### 13.1	Integração com Linguagem de programação; <br>
  #### 13.2	Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais <br>
  #### solicitações feitas pelo professor. <br>
