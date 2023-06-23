@@ -851,9 +851,7 @@ VALUES
      https://colab.research.google.com/drive/13nVozNQjaOaS75BLCi7XpIz4VG8T6dj7?authuser=1#scrollTo=P2G05MqfxFYj
  
  ### 14 Slides e Apresentação em vídeo. <br>
-     OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
- #### 14.1 Slides; <br>
- #### 14.2 Apresentação em vídeo <br>
+  Pitch: https://youtu.be/sQiAf8JxtVI <br>
 
     
 ##### About Formatting
